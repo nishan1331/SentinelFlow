@@ -4,7 +4,7 @@ from scapy.all import sniff, IP, TCP, UDP
 import time
 import plotly.express as px
 
-# Setup page
+# Setup
 st.set_page_config(page_title="SentinelFlow", layout="wide")
 st.title("🛡️ SentinelFlow: Network Data Pipeline")
 
@@ -12,8 +12,6 @@ st.title("🛡️ SentinelFlow: Network Data Pipeline")
 if 'data_log' not in st.session_state:
     st.session_state['data_log'] = pd.DataFrame(columns=["Time", "Source", "Destination", "Protocol", "Length"])
 
-# THE DIRECT FIX: Sniff a few packets every refresh
-# This bypasses the thread blocking issues in Kali
 def capture_now():
     # Sniff 5 packets quickly on eth0
     packets = sniff(iface="eth0", count=5, timeout=1)
@@ -51,9 +49,9 @@ with col2:
         # Metrics
         st.metric("Total Packets", len(st.session_state['data_log']))
         
-        # --- SECURITY ALERT LOGIC ---
+        # SECURITY ALERT LOGIC
         heavy_hitters = st.session_state['data_log']['Source'].value_counts()
-        # Changed to 10 so you can see it trigger with just a few pings!
+        # trigger with just a few pings!
         if heavy_hitters.max() > 10: 
             st.error(f"⚠️ FLOOD DETECTED: {heavy_hitters.idxmax()}")
 # Auto-refresh
