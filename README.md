@@ -20,3 +20,4 @@ SentinelFlow is a standalone security monitoring tool designed for Kali Linux. I
 - **Live Traffic Stream:** Real-time monitoring of Source/Destination IPs and protocols.
 - **Protocol Analysis:** Interactive Plotly charts showing TCP/UDP/ICMP distribution.
 - **Anomalous Traffic Detection:** Automated red-alert triggers for high-velocity IP traffic.
+<img width="1715" height="779" alt="dashboard_demo" src="https://github.com/user-attachments/assets/3cf9935c-fd76-487b-9dc5-cbc034b6c91e" />
